@@ -9,85 +9,175 @@
            max-width: 720px; margin: 0 auto; padding: 24px 20px 64px; color: #1a2b3c; line-height: 1.6; }
     h1 { font-size: 1.7rem; margin-bottom: 4px; }
     h2 { font-size: 1.15rem; margin-top: 32px; }
+    h3 { font-size: 1rem; margin-top: 20px; margin-bottom: 6px; }
     .updated { color: #6b7b8c; font-size: 0.9rem; margin-bottom: 28px; }
-    ul { padding-left: 22px; }
+    ul, ol { padding-left: 22px; }
+    table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 0.95rem; }
+    th, td { text-align: left; padding: 6px 10px 6px 0; border-bottom: 1px solid #dde5ed; vertical-align: top; }
     a { color: #1e6fd9; }
     @media (prefers-color-scheme: dark) {
       body { background: #101820; color: #e6edf3; }
       .updated { color: #9aa8b5; }
       a { color: #6cb2ff; }
+      th, td { border-bottom-color: #26343f; }
     }
   </style>
 </head>
 <body>
   <h1>STEADY — Privacy Policy</h1>
-  <p class="updated">Last updated: July 3, 2026</p>
+  <p class="updated">Last updated: July 23, 2026</p>
 
-  <p>STEADY ("the app", "we") is an AI-powered calorie and nutrition tracking app for Android and iOS,
-     operated by Shivam. Contact:
-     <a href="mailto:shivambhawsar.next@gmail.com">shivambhawsar.next@gmail.com</a>.</p>
+  <p>STEADY ("the app", "we", "us") is an AI-assisted calorie and nutrition tracking app for Android
+     and iOS, operated by Shivam Bhawsar, an individual developer based in India. This policy explains
+     what information STEADY collects, why, who it's shared with, and the choices you have.
+     Contact: <a href="mailto:shivambhawsar.next@gmail.com">shivambhawsar.next@gmail.com</a>.</p>
+
+  <p>STEADY is a self-tracking and logging tool. It does not diagnose, treat, monitor, or manage any
+     medical condition, and it is not a medical device or health service. See
+     <a href="#not-medical-advice">"Not medical advice"</a> below.</p>
 
   <h2>What we collect</h2>
+
+  <h3>Account information</h3>
   <ul>
-    <li><strong>Account information:</strong> your name, email address, and sign-in provider
-        (email/password or Google).</li>
-    <li><strong>Health &amp; fitness data you enter:</strong> date of birth, sex, height, weight and
-        weight history, goal weight, activity level, dietary restrictions, calorie/macro/water goals,
-        food and drink logs, water intake, body measurements, and your messages to the in-app AI coach.</li>
-    <li><strong>Meal photos:</strong> photos you take or select to log meals.</li>
-    <li><strong>Usage analytics:</strong> app events (e.g. sign-in, onboarding steps, meal logged),
-        associated with your account ID and email.</li>
+    <li>Name and email address.</li>
+    <li>Sign-in method: email/password, Google, or Sign in with Apple. If you use Google or Apple,
+        we receive a verified identity token and, depending on your provider settings, your name and
+        email — we never see your Google or Apple password.</li>
   </ul>
 
-  <h2>How we use your data</h2>
+  <h3>Nutrition and wellness information you enter</h3>
+  <p>This is self-reported wellness information, entered voluntarily by you for tracking purposes —
+     it is not clinical or medical data, and STEADY does not interpret it as such:</p>
   <ul>
-    <li>To provide the service: logging meals, computing nutrition, tracking progress, and
-        personalising your calorie and macro targets.</li>
-    <li>To analyse your meal descriptions and photos with AI so they can be converted into
-        nutrition data.</li>
-    <li>To understand how the app is used and improve it (analytics).</li>
+    <li>Date of birth, sex, height, current and goal weight, activity level, dietary restrictions,
+        and your daily calorie/macro/water targets.</li>
+    <li>Food and drink entries (including quantities and, where applicable, an AI confidence score),
+        water intake, weight history, and body measurements (waist, hips, chest, arms, thighs, neck,
+        body fat %) that you choose to log.</li>
+    <li>Photos you take or select of meals, used to estimate nutrition content.</li>
+    <li>Your messages to the in-app AI chat, and the AI's responses, stored so your log history and
+        conversation stay consistent across sessions.</li>
   </ul>
-  <p>We do not sell your data and we do not show ads.</p>
+
+  <h3>Usage analytics</h3>
+  <p>We use PostHog to understand how STEADY is used and to fix problems. This includes app events
+     (e.g. sign-up, sign-in, onboarding steps completed, a meal logged, a chat error) and, to connect
+     that activity to a support request if you contact us, your <strong>account ID, name, and email</strong>
+     — PostHog is not a fully anonymous analytics tool in our configuration.</p>
+
+  <p>We do not sell your data, and STEADY does not show ads.</p>
 
   <h2>Who processes your data</h2>
-  <p>We use the following service providers, acting on our instructions, to run STEADY:</p>
-  <ul>
-    <li><strong>Supabase</strong> — hosts our database, authentication, and photo storage. All of the
-        data listed above is stored here, protected by per-user access rules.</li>
-    <li><strong>OpenRouter / OpenAI models</strong> — when you log a meal by text or photo, the meal
-        description and/or photo (plus relevant context such as your goals and today's totals) is sent
-        to AI models to identify foods and estimate portions. This data is used only to produce your
-        nutrition results.</li>
-    <li><strong>USDA FoodData Central</strong> — food <em>names only</em> are sent to look up verified
-        nutrition data. No personal information is included.</li>
-    <li><strong>PostHog</strong> — usage analytics, associated with your account ID and email.</li>
-  </ul>
+  <p>We use the following service providers, acting on our instructions, to run STEADY. None of these
+     providers may use your data for their own purposes.</p>
+
+  <table>
+    <tr><th>Provider</th><th>Purpose</th><th>What they receive</th></tr>
+    <tr>
+      <td><strong>Supabase</strong></td>
+      <td>Database, authentication, and photo storage</td>
+      <td>All account and nutrition data listed above. Meal photos are stored in a private storage
+          bucket, accessible only via short-lived signed URLs (24-hour expiry) tied to your account.</td>
+    </tr>
+    <tr>
+      <td><strong>OpenRouter, Inc.</strong> (routing to OpenAI models)</td>
+      <td>AI food-photo recognition, AI chat logging, and nutrition matching</td>
+      <td>When you log a meal by photo or text, or use the AI chat, your photo and/or message text
+          (plus relevant context such as your goals and today's totals) is sent via OpenRouter to
+          OpenAI's GPT-4o / GPT-4o-mini models to identify foods and estimate nutrition. This data is
+          used only to generate your result and is not used to train third-party models under our
+          API terms with these providers.</td>
+    </tr>
+    <tr>
+      <td><strong>USDA FoodData Central</strong> (U.S. government API)</td>
+      <td>Verified nutrition lookups</td>
+      <td>Food names/search terms only — no account or personal information is sent.</td>
+    </tr>
+    <tr>
+      <td><strong>Google</strong> / <strong>Apple</strong></td>
+      <td>Sign-in</td>
+      <td>Used only if you choose "Continue with Google" or "Sign in with Apple" — standard OAuth
+          identity exchange with the provider you selected.</td>
+    </tr>
+    <tr>
+      <td><strong>PostHog</strong></td>
+      <td>Usage analytics</td>
+      <td>App usage events, account ID, name, and email (see "Usage analytics" above).</td>
+    </tr>
+  </table>
 
   <h2>Data retention</h2>
-  <p>Your data is kept for as long as your account exists. When you delete your account, your data is
-     deleted immediately and permanently (see below).</p>
+  <ul>
+    <li>Your account and nutrition data (profile, logs, photos, chat history) are retained for as
+        long as your account exists.</li>
+    <li>Meal photos are retained only as long as needed to display your log history; deleting a food
+        entry deletes its photo.</li>
+    <li>When you delete your account, all of the above is deleted immediately and permanently — see
+        below.</li>
+    <li>Anonymized, non-identifying nutrition facts (e.g. "1 slice whole-wheat bread ≈ 80 kcal") that
+        food entries contribute to our shared food database are retained after account deletion, with
+        no link back to you.</li>
+  </ul>
+
+  <h2>Your rights and choices</h2>
+  <p>Wherever you're located, you have the right to:</p>
+  <ul>
+    <li><strong>Access</strong> the personal data we hold about you.</li>
+    <li><strong>Correct</strong> inaccurate data — most fields can be edited directly in the app.</li>
+    <li><strong>Delete</strong> your account and all associated data at any time (see below).</li>
+    <li><strong>Export</strong> your data — email us and we will provide a copy of your logged data in
+        a portable format within 30 days.</li>
+    <li><strong>Withdraw consent</strong> for optional features (e.g. you can decline Google/Apple
+        sign-in and use email/password instead).</li>
+  </ul>
+  <p>To exercise any of these rights, email
+     <a href="mailto:shivambhawsar.next@gmail.com">shivambhawsar.next@gmail.com</a>. We will respond
+     within 30 days.</p>
+  <p><strong>California residents:</strong> we do not sell or share your personal information for
+     cross-context behavioral advertising, so there is nothing to opt out of under the CCPA/CPRA.
+     You may still exercise the access, deletion, and correction rights above.</p>
+  <p><strong>EEA/UK residents:</strong> our legal basis for processing your data is your consent
+     (when you create an account and log data) and our legitimate interest in operating and
+     improving the app. You may also have the right to lodge a complaint with your local data
+     protection authority.</p>
 
   <h2>Deleting your account and data</h2>
   <p>You can delete your account at any time inside the app: <strong>Settings → Delete account</strong>.
-     This permanently erases your profile, food logs, photos, weight and water history, measurements,
-     and chat history. You can also request deletion without the app — see our
-     <a href="delete-account.html">account deletion page</a>.</p>
+     This permanently and immediately erases your profile, food and drink logs, meal photos, water
+     intake, weight history, body measurements, and chat history. You can also request deletion
+     without the app — see our <a href="delete-account.html">account deletion page</a>.</p>
 
   <h2>Security</h2>
-  <p>All data is encrypted in transit (TLS). Database access is restricted with row-level security so
-     each account can only ever read its own data.</p>
+  <p>Data is encrypted in transit (TLS) between the app and our servers. Data at rest in our database
+     and storage buckets is encrypted by our infrastructure provider (Supabase, built on PostgreSQL
+     with encryption at rest). Database access is restricted with row-level security so each account
+     can only ever read or write its own data. Meal photos are stored in a private bucket and are not
+     publicly accessible.</p>
 
-  <h2>Children</h2>
-  <p>STEADY is not directed at children and is intended for users aged 18 and over.</p>
+  <h2>Children's privacy</h2>
+  <p>STEADY is intended for users aged 18 and over, and is not directed at children. We do not
+     knowingly collect personal information from anyone under 18. If we learn that we have collected
+     information from a user under 18, we will delete it promptly — contact us at the email above if
+     you believe this has happened.</p>
 
-  <h2>Not medical advice</h2>
-  <p>Calorie and nutrition figures in STEADY are AI-assisted estimates for general wellness purposes.
-     They are not medical advice — consult a qualified professional for medical or dietary decisions.</p>
+  <h2 id="not-medical-advice">Not medical advice</h2>
+  <p>Calorie and nutrition figures in STEADY, including AI-generated estimates, are approximations for
+     general self-tracking and wellness purposes. They are not medical advice, diagnosis, or
+     treatment, and STEADY is not a substitute for professional medical or nutritional guidance.
+     Consult a qualified professional for medical or clinical dietary decisions.</p>
+
+  <h2>International data transfers</h2>
+  <p>Our service providers (Supabase, OpenRouter, PostHog) may process data on servers located outside
+     your country, including in the United States. Where required, we rely on these providers'
+     standard contractual safeguards for cross-border data transfers.</p>
 
   <h2>Changes to this policy</h2>
-  <p>If we make material changes we will update this page and the "Last updated" date above.</p>
+  <p>If we make material changes, we will update this page and the "Last updated" date above. If
+     changes are significant, we will also notify you in the app.</p>
 
   <h2>Contact</h2>
-  <p><a href="mailto:shivambhawsar.next@gmail.com">shivambhawsar.next@gmail.com</a></p>
+  <p>Shivam Bhawsar —
+     <a href="mailto:shivambhawsar.next@gmail.com">shivambhawsar.next@gmail.com</a></p>
 </body>
 </html>
